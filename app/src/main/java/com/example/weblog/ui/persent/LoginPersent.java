@@ -46,6 +46,7 @@ public class LoginPersent {
                     // 打开一个HttpURLConnection连接
                     HttpURLConnection urlConn = (HttpURLConnection) url.openConnection();
                     // 设置连接超时时间
+
                     urlConn.setConnectTimeout(5 * 1000);
                     //设置从主机读取数据超时
                     urlConn.setReadTimeout(5 * 1000);
