@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--没有按下时候的样子，drawable可以是一个章图片，也可以是String值-->
+    <item android:drawable="@drawable/taiqi" android:state_pressed="false"/>
+    <item android:drawable="@drawable/anxia" android:state_pressed="true"/>
+
+</selector>

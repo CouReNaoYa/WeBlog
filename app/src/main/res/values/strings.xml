@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WeBlog</string>
+    <drawable name="anxia">#88CFC0</drawable>
+    <drawable name="taiqi">#19CFC0</drawable>
+</resources>
