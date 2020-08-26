@@ -32,6 +32,7 @@ public class LoginActivity extends BaseActivity {
     private TextView tvForgetPassword;
 
     private LoginPersent loginPersent;
+
     private Map<String,String> params;
 
     private FragmentManager fragmentManager;
