@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainViewActivity extends BaseActivity {
+
+
     private List<Fragment> viewList=new ArrayList<>();
     private List<RadioButton> radioButtons;
     private RadioGroup radioGroup;

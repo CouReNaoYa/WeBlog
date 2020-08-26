@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.Map;
 
 public class LoginPersent {
+
+
     private LoginResult loginResult;
     public void postLogin(final OnGetLoginDataListener listener, final Map<String,String> paramsMap) {
         //开启线程，发送请求
