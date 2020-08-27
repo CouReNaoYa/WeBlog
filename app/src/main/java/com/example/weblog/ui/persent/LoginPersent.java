@@ -79,19 +79,6 @@ public class LoginPersent {
                         loginResult=new LoginResult();
                         Gson gson = new Gson();
                         loginResult = gson.fromJson(result, loginResult.getClass());
-                        JsonParser parser = new JsonParser();
-                        JsonObject jsonObject = parser.parse(result).getAsJsonObject();
-
-                        JsonArray jsonArray = jsonObject.getAsJsonArray("data");
-                        for (int i = 0; i < jsonArray.size(); i++) {
-                            //获取第i个数组元素
-                            JsonElement el = jsonArray.get(i);
-                            //映射为类实例
-                            userItems.add(gson.fromJson(el, UserItem.class));
-                            //  Bean1.SubjectsBean subject = gson.fromJson(el, Bean1.SubjectsBean.class);
-                        }
-
-                        loginResult.setData(userItems);
 
                         listener.getSuccess(loginResult);
                        // Log.e(TAG, "Post方式请求成功，result--->" + result);
