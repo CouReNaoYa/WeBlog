@@ -1,5 +1,6 @@
 package com.example.weblog.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -8,9 +9,12 @@ import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.weblog.R;
+import com.example.weblog.bean.LoginResult;
 import com.example.weblog.ui.activity.base.BaseActivity;
 import com.example.weblog.ui.adapter.MainPagerAdapter;
 import com.example.weblog.ui.adapter.base.BaseAdapter;
@@ -22,15 +26,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainViewActivity extends BaseActivity {
-
+    private FragmentManager fragmentManager;
 
     private List<Fragment> viewList=new ArrayList<>();
-    private List<RadioButton> radioButtons;
+    private List<RadioButton> radioButtons=new ArrayList<>();
     private RadioGroup radioGroup;
 
 
     @Override
     protected void loadData() {
+
 
     }
 
@@ -41,6 +46,20 @@ public class MainViewActivity extends BaseActivity {
 
     @Override
     protected void initData(Bundle savedInstanceState) {
+        Intent intent=getIntent();
+        Bundle data=intent.getExtras();
+        LoginResult loginResult=(LoginResult)data.getParcelable("loginResult");
+
+
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("loginResult", loginResult);
+        AccountInformationFragment accountInformationFragment = new AccountInformationFragment();
+        accountInformationFragment.setArguments(bundle);
+
+        fragmentManager =getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.viewPager,accountInformationFragment);
+        fragmentTransaction.commit();
 
     }
 

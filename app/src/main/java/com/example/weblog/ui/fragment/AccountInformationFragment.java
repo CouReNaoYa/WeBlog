@@ -21,9 +21,14 @@ public class AccountInformationFragment extends BaseFragment {
     @Override
     protected void loadData() {
         LoginResult getloginResult= (LoginResult) getArguments().get("loginResult");
-        tvAccountName.setText(getloginResult.getData().get(0).getName());
-        tvAccountUserId.setText(getloginResult.getData().get(0).getUid());
-        tvAccountTextCount.setText(getloginResult.getData().get(0).getCount());
+        if (getloginResult==null){
+            System.out.println("getloginResult=0");
+        }
+        else{
+            System.out.println("getloginResult不为0");
+        tvAccountName.setText(getloginResult.getData().getName());
+        tvAccountUserId.setText(getloginResult.getData().getUid());
+        tvAccountTextCount.setText(getloginResult.getData().getCount());}
     }
 
     @Override

@@ -35,7 +35,7 @@ public class LoginActivity extends BaseActivity {
 
     private Map<String,String> params;
 
-    private FragmentManager fragmentManager;
+
 
 
 
@@ -46,43 +46,31 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void setListener() {
-        String login_id=etLoginAccount.getText().toString();
-        String login_password=etLonginPassword.getText().toString();
-        params=new HashMap<String,String>();
-        loginPersent=new LoginPersent();
 
-        params.put("email",login_id);
-        params.put("password",login_password);
+
+
         btLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String login_id=etLoginAccount.getText().toString();
                 String login_password=etLonginPassword.getText().toString();
-                params.put("email",login_id);
+                params=new HashMap<String,String>();
+                loginPersent=new LoginPersent();
+
+
+                params.put("email",etLoginAccount.getText().toString());
                 params.put("password",login_password);
+
                 loginPersent.postLogin(new OnGetLoginDataListener() {
                     @Override
                     public void getSuccess(final LoginResult loginResult) {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-//                                final Bundle data=new Bundle();
-//                                data.putParcelable("loginResult", loginResult);
-//                                Intent intent = new Intent(LoginActivity.this,MainViewActivity.class);//这个为跳转activity
-//                                intent.putExtras(data);
-//                                startActivity(intent);
-
-                                AccountInformationFragment accountInformationFragment = new AccountInformationFragment();
                                 Bundle bundle = new Bundle();
                                 bundle.putParcelable("loginResult", loginResult);
-                                accountInformationFragment.setArguments(bundle);
-
-                                fragmentManager =getSupportFragmentManager();
-                                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-                                fragmentTransaction.replace(R.id.viewPager,accountInformationFragment);
-                                fragmentTransaction.commit();
-
                                 Intent intent = new Intent(LoginActivity.this,MainViewActivity.class);
+                                intent.putExtras(bundle);
                                 startActivity(intent);
 
                             }
