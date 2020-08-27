@@ -78,7 +78,6 @@ public class TextListPersent {
                             textItems.add(gson.fromJson(el, TextItem.class));
                             //  Bean1.SubjectsBean subject = gson.fromJson(el, Bean1.SubjectsBean.class);
                         }
-
                         textListResult.setData(textItems);
                         listener.getSuccess(textListResult);
 
