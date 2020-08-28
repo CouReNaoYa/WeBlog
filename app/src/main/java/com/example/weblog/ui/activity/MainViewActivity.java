@@ -49,6 +49,9 @@ public class MainViewActivity extends BaseActivity {
         Intent intent=getIntent();
         Bundle data=intent.getExtras();
         LoginResult loginResult=(LoginResult)data.getParcelable("loginResult");
+        if(loginResult==null) System.out.println("loginresult为空");
+        else System.out.println("loginresult不为空");
+        System.out.println("mainviewactivity的longinresult"+loginResult.getData().getEmail());
 
 
         Bundle bundle = new Bundle();

@@ -69,6 +69,7 @@ public class LoginActivity extends BaseActivity {
                             public void run() {
                                 Bundle bundle = new Bundle();
                                 bundle.putParcelable("loginResult", loginResult);
+
                                 Intent intent = new Intent(LoginActivity.this,MainViewActivity.class);
                                 intent.putExtras(bundle);
                                 startActivity(intent);

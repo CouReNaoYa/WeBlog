@@ -26,6 +26,7 @@ public class AccountInformationFragment extends BaseFragment {
         }
         else{
             System.out.println("getloginResult不为0");
+            System.out.println("getloginresult的值"+getloginResult.getData().getEmail());
         tvAccountName.setText(getloginResult.getData().getName());
         tvAccountUserId.setText(getloginResult.getData().getUid());
         tvAccountTextCount.setText(getloginResult.getData().getCount());}

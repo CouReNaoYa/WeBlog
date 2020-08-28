@@ -3,9 +3,10 @@ package com.example.weblog.bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class LoginResult implements Parcelable {
+public class LoginResult implements Parcelable  {
     private int code;
     private String msg;
     private UserItem data;

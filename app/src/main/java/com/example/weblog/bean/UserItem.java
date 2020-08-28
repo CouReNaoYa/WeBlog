@@ -1,6 +1,9 @@
 package com.example.weblog.bean;
 
-public class UserItem {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class UserItem implements Parcelable {
 
         /**
          * uid : 1
@@ -20,7 +23,29 @@ public class UserItem {
         private String createTime;
         private String updateTime;
 
-        public int getUid() {
+    protected UserItem(Parcel in) {
+        uid = in.readInt();
+        name = in.readString();
+        type = in.readInt();
+        count = in.readInt();
+        email = in.readString();
+        createTime = in.readString();
+        updateTime = in.readString();
+    }
+
+    public static final Creator<UserItem> CREATOR = new Creator<UserItem>() {
+        @Override
+        public UserItem createFromParcel(Parcel in) {
+            return new UserItem(in);
+        }
+
+        @Override
+        public UserItem[] newArray(int size) {
+            return new UserItem[size];
+        }
+    };
+
+    public int getUid() {
             return uid;
         }
 
@@ -77,4 +102,19 @@ public class UserItem {
         }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(uid);
+        dest.writeString(name);
+        dest.writeInt(type);
+        dest.writeInt(count);
+        dest.writeString(email);
+        dest.writeString(createTime);
+        dest.writeString(updateTime);
+    }
 }

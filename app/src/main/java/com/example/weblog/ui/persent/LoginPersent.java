@@ -72,7 +72,7 @@ public class LoginPersent {
                     //设置本次连接是否自动处理重定向
                     urlConn.setInstanceFollowRedirects(true);
                     // 配置请求Content-Type
-                    urlConn.setRequestProperty("Content-Type", "x-www-form-urlencoded");
+                    urlConn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
                     // 开始连接
                     urlConn.connect();
                     // 发送请求参数
@@ -104,6 +104,7 @@ public class LoginPersent {
                         loginResult=new LoginResult();
                         Gson gson = new Gson();
                         loginResult = gson.fromJson(result, loginResult.getClass());
+                        System.out.println("json转换成bean过程"+loginResult.getData().getName());
 
                         listener.getSuccess(loginResult);
                        // Log.e(TAG, "Post方式请求成功，result--->" + result);
