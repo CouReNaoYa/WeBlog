@@ -12,6 +12,7 @@ import com.example.weblog.R;
 import com.example.weblog.bean.TextItem;
 import com.example.weblog.ui.adapter.base.BaseAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TextListAdapter extends  RecyclerView.Adapter<TextListAdapter.MyViewHolder> implements BaseAdapter<TextListAdapter.MyViewHolder>,View.OnClickListener {
@@ -21,7 +22,7 @@ public class TextListAdapter extends  RecyclerView.Adapter<TextListAdapter.MyVie
 
     public TextListAdapter(Context context ){
         this.context = context;
-      //  this.textItemList =textItemList;
+        textItemList=new ArrayList<>();
     }
 
 
@@ -50,10 +51,10 @@ public class TextListAdapter extends  RecyclerView.Adapter<TextListAdapter.MyVie
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.tv_text_author_name.setText(textItemList.get(position).getAuthor());
-        holder.tv_text_creat_time.setText(textItemList.get(position).getCreateTime());
-        holder.tv_text_classify.setText(textItemList.get(position).getClassify());
-        holder.tv_text_content.setText(textItemList.get(position).getContent());
+        holder.tv_text_author_name.setText(""+textItemList.get(position).getAuthorName());
+        holder.tv_text_creat_time.setText(""+textItemList.get(position).getCreateTime());
+        holder.tv_text_classify.setText("文章分类："+textItemList.get(position).getClassifyName());
+        holder.tv_text_content.setText(""+textItemList.get(position).getContent());
     }
 
 

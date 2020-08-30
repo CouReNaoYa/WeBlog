@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:textColor="#FF2727"
+    android:background="@color/colorPrimary"
     android:focusable="false"
     >
 
@@ -11,10 +12,11 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="fill_parent"
-        android:background="#F8F8F8"
-        android:layout_height="683dp" />
+        android:background="#FFFFFF"
+        android:layout_height="750dp" />
 
     <RadioGroup
+        android:background="@color/colorAccent"
         android:id="@+id/titleGroup"
         android:layout_width="match_parent"
         android:layout_height="50dp"

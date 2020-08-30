@@ -15,6 +15,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.weblog.R;
 import com.example.weblog.bean.LoginResult;
+import com.example.weblog.bean.UserItem;
 import com.example.weblog.ui.activity.base.BaseActivity;
 import com.example.weblog.ui.adapter.MainPagerAdapter;
 import com.example.weblog.ui.adapter.base.BaseAdapter;
@@ -49,6 +50,8 @@ public class MainViewActivity extends BaseActivity {
         Intent intent=getIntent();
         Bundle data=intent.getExtras();
         LoginResult loginResult=(LoginResult)data.getParcelable("loginResult");
+//        loginuser=loginResult.getData();
+//        String a=loginResult.getData().getEmail();
         if(loginResult==null) System.out.println("loginresult为空");
         else System.out.println("loginresult不为空");
         System.out.println("mainviewactivity的longinresult"+loginResult.getData().getEmail());
@@ -71,15 +74,17 @@ public class MainViewActivity extends BaseActivity {
         final ViewPager MainViewPager = (ViewPager) findViewById(R.id.viewPager);
         Fragment account_information_fragment=new AccountInformationFragment();
         Fragment text_list_fragment=new TextListFragment();
-        viewList.add(account_information_fragment);
         viewList.add(text_list_fragment);
+        viewList.add(account_information_fragment);
+
         MainPagerAdapter pagerAdapter = new MainPagerAdapter(getSupportFragmentManager(),viewList);
         MainViewPager.setAdapter(pagerAdapter);
 
         RadioButton btMainviewTextlist=findViewById(R.id.bt_mainview_textlist);
         RadioButton btMainviewAccount=findViewById(R.id.bt_mainview_account);
-        radioButtons.add(btMainviewAccount);
         radioButtons.add(btMainviewTextlist);
+        radioButtons.add(btMainviewAccount);
+
 
         MainViewPager.setOnPageChangeListener(new PageChangeListener(radioButtons));
         radioGroup= (RadioGroup) findViewById(R.id.titleGroup);

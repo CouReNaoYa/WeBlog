@@ -24,7 +24,7 @@ import java.util.List;
 
 public class TextListPersent {
     private TextListPersent textListPersent;
-    public static final String GetTextList="http://47.101.132.233:8099/api/article";
+    public static final String GetTextList="http://47.101.132.233:8099/api/article/all";
     private TextListResult textListResult;
 
     public void getTextList(final OnGetTextListDataListener listener){
@@ -54,7 +54,7 @@ public class TextListPersent {
                         a.append(line);
                     }
                     String result = a.toString();
-                    System.out.println(result);
+                    System.out.println("1111111111112222"+result);
 
 
 
@@ -65,6 +65,7 @@ public class TextListPersent {
                         textListResult=new TextListResult();
                         Gson gson = new Gson();
                         textListResult = gson.fromJson(result, textListResult.getClass());
+
                         List<TextItem> textItems=new ArrayList<>();
 
                         JsonParser parser = new JsonParser();

@@ -67,8 +67,18 @@ public class LoginActivity extends BaseActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+//                                String UserEmail=loginResult.getData().getEmail();
+//                                int a=loginResult.getData().getUid();
+//                                String UserId=getString(a);
+//                                String UserName=loginResult.getData().getName();
+
+
+
                                 Bundle bundle = new Bundle();
-                                bundle.putParcelable("loginResult", loginResult);
+//                                bundle.putString("UserEmail", UserEmail);
+//                                bundle.putString("UserId", UserId);
+//                                bundle.putString("UserName", UserName);
+                                bundle.putParcelable("loginResult",loginResult);
 
                                 Intent intent = new Intent(LoginActivity.this,MainViewActivity.class);
                                 intent.putExtras(bundle);

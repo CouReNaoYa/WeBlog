@@ -22,6 +22,7 @@ public class TextListFragment extends BaseFragment {
 
     @Override
     protected void loadData() {
+        textListPersent=new TextListPersent();
         textListPersent.getTextList( new OnGetTextListDataListener() {
 
             @Override
@@ -36,6 +37,7 @@ public class TextListFragment extends BaseFragment {
 //                        String a=movieResult.getDatas().get(0).getImages().getMedium();
 //                        Glide.with(MovieListsActivity.this).load(a).into(ivListTopBackground);
 //                        movieListAdapter.setList(movieResult.getDatas());
+                        System.out.println("textlist:"+textListResult.getData().get(0).getAuthorName());
                         textListAdapter.setList(textListResult.getData());
 
 
@@ -66,15 +68,15 @@ public class TextListFragment extends BaseFragment {
 
     @Override
     protected void initData(Bundle savedInstanceState) {
-
-    }
-
-    @Override
-    public void initView() {
         recyclerTextList =super.view.findViewById(R.id.recycler_testlist);
         textListAdapter=new TextListAdapter(getActivity());
         recyclerTextList.setLayoutManager (new LinearLayoutManager(getActivity (),LinearLayoutManager.VERTICAL,false));
         recyclerTextList.setAdapter(textListAdapter);
+    }
+
+    @Override
+    public void initView() {
+
     }
 
     @Override

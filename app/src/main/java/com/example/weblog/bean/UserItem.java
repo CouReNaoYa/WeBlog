@@ -3,25 +3,24 @@ package com.example.weblog.bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class UserItem implements Parcelable {
+public  class UserItem implements Parcelable{
+    /**
+     * uid : 1
+     * name : test
+     * type : 2
+     * count : 2
+     * email : test@test.com
+     * createTime : 2020-07-22 12:12:41
+     * updateTime : 2020-08-28 21:12:17
+     */
 
-        /**
-         * uid : 1
-         * name : test
-         * type : 2
-         * count : 1
-         * email : test@test.com
-         * createTime : 2020-07-22 12:12:41
-         * updateTime : 2020-08-24 20:39:26
-         */
-
-        private int uid;
-        private String name;
-        private int type;
-        private int count;
-        private String email;
-        private String createTime;
-        private String updateTime;
+    private int uid;
+    private String name;
+    private int type;
+    private int count;
+    private String email;
+    private String createTime;
+    private String updateTime;
 
     protected UserItem(Parcel in) {
         uid = in.readInt();
@@ -46,61 +45,60 @@ public class UserItem implements Parcelable {
     };
 
     public int getUid() {
-            return uid;
-        }
+        return uid;
+    }
 
-        public void setUid(int uid) {
-            this.uid = uid;
-        }
+    public void setUid(int uid) {
+        this.uid = uid;
+    }
 
-        public String getName() {
-            return name;
-        }
+    public String getName() {
+        return name;
+    }
 
-        public void setName(String name) {
-            this.name = name;
-        }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-        public int getType() {
-            return type;
-        }
+    public int getType() {
+        return type;
+    }
 
-        public void setType(int type) {
-            this.type = type;
-        }
+    public void setType(int type) {
+        this.type = type;
+    }
 
-        public int getCount() {
-            return count;
-        }
+    public int getCount() {
+        return count;
+    }
 
-        public void setCount(int count) {
-            this.count = count;
-        }
+    public void setCount(int count) {
+        this.count = count;
+    }
 
-        public String getEmail() {
-            return email;
-        }
+    public String getEmail() {
+        return email;
+    }
 
-        public void setEmail(String email) {
-            this.email = email;
-        }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-        public String getCreateTime() {
-            return createTime;
-        }
+    public String getCreateTime() {
+        return createTime;
+    }
 
-        public void setCreateTime(String createTime) {
-            this.createTime = createTime;
-        }
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
 
-        public String getUpdateTime() {
-            return updateTime;
-        }
+    public String getUpdateTime() {
+        return updateTime;
+    }
 
-        public void setUpdateTime(String updateTime) {
-            this.updateTime = updateTime;
-        }
-
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
+    }
 
     @Override
     public int describeContents() {

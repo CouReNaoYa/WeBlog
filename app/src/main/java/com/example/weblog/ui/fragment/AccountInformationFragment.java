@@ -18,18 +18,18 @@ public class AccountInformationFragment extends BaseFragment {
     private TextView tvAccountTextCount;
 
 
+
     @Override
     protected void loadData() {
-        LoginResult getloginResult= (LoginResult) getArguments().get("loginResult");
-        if (getloginResult==null){
-            System.out.println("getloginResult=0");
-        }
-        else{
-            System.out.println("getloginResult不为0");
-            System.out.println("getloginresult的值"+getloginResult.getData().getEmail());
-        tvAccountName.setText(getloginResult.getData().getName());
-        tvAccountUserId.setText(getloginResult.getData().getUid());
-        tvAccountTextCount.setText(getloginResult.getData().getCount());}
+        Bundle bundle=getArguments();
+        if (bundle!=null) {
+
+            LoginResult getloginResult = (LoginResult) bundle.get("loginResult");
+                tvAccountName.setText("用户名称"+getloginResult.getData().getName());
+                tvAccountUserId.setText("用户id：" + getloginResult.getData().getUid());
+                tvAccountTextCount.setText("用户文章数目" + getloginResult.getData().getCount());
+            }
+
     }
 
     @Override
