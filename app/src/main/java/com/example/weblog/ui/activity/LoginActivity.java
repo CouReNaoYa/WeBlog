@@ -1,6 +1,7 @@
 package com.example.weblog.ui.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -33,7 +34,9 @@ public class LoginActivity extends BaseActivity {
 
     private LoginPersent loginPersent;
 
+
     private Map<String,String> params;
+    public static SharedPreferences spf;
 
 
 
@@ -47,6 +50,21 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void setListener() {
 
+        tvCreatAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this,LoginRegisteraActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        tvForgetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
 
         btLoginButton.setOnClickListener(new View.OnClickListener() {
@@ -56,28 +74,23 @@ public class LoginActivity extends BaseActivity {
                 String login_password=etLonginPassword.getText().toString();
                 params=new HashMap<String,String>();
                 loginPersent=new LoginPersent();
-
-
                 params.put("email",etLoginAccount.getText().toString());
                 params.put("password",login_password);
-
                 loginPersent.postLogin(new OnGetLoginDataListener() {
                     @Override
                     public void getSuccess(final LoginResult loginResult) {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-//                                String UserEmail=loginResult.getData().getEmail();
-//                                int a=loginResult.getData().getUid();
-//                                String UserId=getString(a);
-//                                String UserName=loginResult.getData().getName();
-
+                                //1.创建SharedPreferences对象
+                                spf=getSharedPreferences("cun.xml",MODE_PRIVATE);
+                                //2.创建Editor对象，写入值
+                                SharedPreferences.Editor editor=spf.edit();
+                                editor.putString("token",loginResult.getData().getToken());
+                                editor.commit();
 
 
                                 Bundle bundle = new Bundle();
-//                                bundle.putString("UserEmail", UserEmail);
-//                                bundle.putString("UserId", UserId);
-//                                bundle.putString("UserName", UserName);
                                 bundle.putParcelable("loginResult",loginResult);
 
                                 Intent intent = new Intent(LoginActivity.this,MainViewActivity.class);
@@ -106,7 +119,7 @@ public class LoginActivity extends BaseActivity {
             @Override
             protected void initView() {
 
-                etLoginAccount = findViewById(R.id.et_login_account);
+                etLoginAccount = findViewById(R.id.et_login_email);
                 etLonginPassword = findViewById(R.id.et_login_password);
                 btLoginButton = findViewById(R.id.bt_login_button);
                 tvCreatAccount = findViewById(R.id.tv_creat_account);

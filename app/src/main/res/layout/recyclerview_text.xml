@@ -8,6 +8,8 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="30dp"
+        android:src="@drawable/touxiang"
+
         android:layout_marginLeft="30dp" />
 
     <TextView
@@ -50,16 +52,12 @@
         android:layout_marginTop="90dp"
         />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
 
-        android:layout_marginBottom="10dp"
-        android:background="#FFFFFF"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@id/tv_text_content"
+        android:layout_marginTop="15dp"
         android:background="#F1F1F1"/>
 
 

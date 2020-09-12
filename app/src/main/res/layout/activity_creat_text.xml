@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent">
+
+    <TextView
+        android:id="@+id/tv_creat_text_cancel"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="取消"
+    android:layout_marginTop="30dp"
+    android:layout_marginLeft="20dp"
+    android:textSize="20dp"
+    android:textStyle="bold"
+    android:background="@color/colorAccent"
+    android:textColor="#FFFFFF"
+    />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="发表文章"
+        android:layout_marginTop="30dp" 
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:background="@color/colorAccent"
+        android:textColor="#FFFFFF"
+        />
+
+    <TextView
+        android:id="@+id/tv_creat_text_publish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="发表"
+        android:layout_marginTop="30dp"
+
+        android:layout_marginLeft="350dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:background="@color/colorAccent"
+        android:textColor="#FFFFFF"
+        />
+
+    <RelativeLayout
+        android:background="#FFFFFF"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp">
+
+
+        <EditText
+            android:id="@+id/et_creat_text_title"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#FFFFFF"
+            android:hint="  请填写标题..."
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/et_creat_text_title"
+            android:background="#F1F1F1"/>
+
+        <EditText
+            android:id="@+id/et_creat_text_content"
+            android:background="#FFFFFF"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="40dp"
+            android:textSize="15dp"
+            android:hint="  请输入内容..."
+            android:gravity="top|left"
+            android:textHintColor="#fff"
+
+            android:ellipsize="end"
+            />
+
+        <ImageView
+            android:id="@+id/iv_creat_text_addphoto"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_below="@id/et_creat_text_content"
+
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/photo"
+            />
+
+
+
+        <TextView
+            android:layout_below="@id/iv_creat_text_addphoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:hint="请选择分类"
+            android:layout_marginLeft="20dp"
+            android:gravity="right" />
+
+        <TextView
+            android:id="@+id/tv_creat_text_chose_classify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请选择..."
+            android:layout_below="@id/iv_creat_text_addphoto"
+            android:layout_marginLeft="300dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

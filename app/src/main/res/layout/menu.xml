@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" android:layout_height="20dp" android:layout_width="wrap_content">
+    <item
+        android:id="@+id/item_add_text"
+        android:title="新增文章" />
+    <item
+        android:id="@+id/item_select_text_by_id"
+        android:title="ID查找文章" />
+    <item
+        android:id="@+id/item_select_account_by_id"
+        android:title="ID查找用户" />
+    <item
+        android:id="@+id/item_select_text_by_core"
+        android:title="关键字搜索文章" />
+</menu>

@@ -1,10 +1,11 @@
 package com.example.weblog.ui.persent;
 
-import android.widget.Toast;
-
 import com.example.weblog.bean.LoginResult;
-import com.example.weblog.bean.UserItem;
+import com.example.weblog.bean.TextItem;
+import com.example.weblog.bean.TextListResult;
 import com.example.weblog.ui.listener.OnGetLoginDataListener;
+import com.example.weblog.ui.listener.OnGetRegisterDataListener;
+import com.example.weblog.ui.listener.OnGetTextListDataListener;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -22,19 +23,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class LoginPersent {
-
-
+public class RegisterPersent {
     private LoginResult loginResult;
-    public void postLogin(final OnGetLoginDataListener listener, final Map<String,String> paramsMap) {
+    String result;
+    public void postLogin(final OnGetRegisterDataListener listener, final Map<String,String> paramsMap) {
         //开启线程，发送请求
-
-
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    String baseUrl = "http://47.101.132.233:8099/api/user/login";
+                    String baseUrl = "http://47.101.132.233:8099/api/user/register";
                     //合成参数
                     StringBuilder tempParams = new StringBuilder();
 
@@ -48,8 +46,6 @@ public class LoginPersent {
                     }
 
                     String params =tempParams.toString();
-                    System.out.println(" Params");
-                    System.out.println(params.toString());
                     // 请求的参数转换为byte数组
                     byte[] postData = params.getBytes();
                     // 新建一个URL对象
@@ -92,27 +88,28 @@ public class LoginPersent {
                     while ((line = reader.readLine()) != null) {
                         a.append(line);
                     }
-                    String result = a.toString();
+                    result = a.toString();
                     System.out.println(result);
 
-                    // 判断请求是否成功
+                     //判断请求是否成功
+                    System.out.println("code为！！！！！"+urlConn.getResponseCode() );
                     if (urlConn.getResponseCode() == 200) {
                         // 获取返回的数据
                         loginResult=new LoginResult();
                         Gson gson = new Gson();
                         loginResult = gson.fromJson(result, loginResult.getClass());
-                        System.out.println("json转换成bean过程"+loginResult.getData().getName());
-
-                        listener.getSuccess(loginResult);
-                       // Log.e(TAG, "Post方式请求成功，result--->" + result);
-                    } else {
-                       // Log.e(TAG, "Post方式请求失败");
+                        listener.getSuccess();
+                        // Log.e(TAG, "Post方式请求成功，result--->" + result);
                     }
+                    else {
+                        throw new Exception();
+                    }
+
                     // 关闭连接
                     //urlConn.disconnect();
                 } catch (Exception e) {
-                   // Log.e(TAG, e.toString());
-                    listener.getFailed(e);
+                    // Log.e(TAG, e.toString());
+                    listener.getFailed(e,loginResult);
                     System.out.println("网络错误");
                 }
             }

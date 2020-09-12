@@ -1,7 +1,9 @@
 package com.example.weblog.ui.fragment;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -16,6 +18,7 @@ public class AccountInformationFragment extends BaseFragment {
     private TextView tvAccountName;
     private TextView tvAccountUserId;
     private TextView tvAccountTextCount;
+    private RelativeLayout rlAccountInformation;
 
 
 
@@ -25,6 +28,9 @@ public class AccountInformationFragment extends BaseFragment {
         if (bundle!=null) {
 
             LoginResult getloginResult = (LoginResult) bundle.get("loginResult");
+
+            String a=getloginResult.getData().getName();
+            System.out.println("111111111222222222223333333333333"+a);
                 tvAccountName.setText("用户名称"+getloginResult.getData().getName());
                 tvAccountUserId.setText("用户id：" + getloginResult.getData().getUid());
                 tvAccountTextCount.setText("用户文章数目" + getloginResult.getData().getCount());
@@ -45,8 +51,9 @@ public class AccountInformationFragment extends BaseFragment {
     @Override
     protected void initView() {
 
-        ivAccountPicture = super.view.findViewById(R.id.iv_account_picture);
-        tvAccountName=super.view.findViewById(R.id.tv_account_name);
+
+        ivAccountPicture = view.findViewById(R.id.iv_account_picture);
+        tvAccountName=view.findViewById(R.id.tv_account_name);
         tvAccountUserId=super.view.findViewById(R.id.tv_account_uid);
         tvAccountTextCount=super.view.findViewById(R.id.tv_account_textcount);
     }

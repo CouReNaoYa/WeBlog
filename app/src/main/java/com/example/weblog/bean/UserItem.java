@@ -20,7 +20,9 @@ public  class UserItem implements Parcelable{
     private int count;
     private String email;
     private String createTime;
+    private String token;
     private String updateTime;
+
 
     protected UserItem(Parcel in) {
         uid = in.readInt();
@@ -29,7 +31,20 @@ public  class UserItem implements Parcelable{
         count = in.readInt();
         email = in.readString();
         createTime = in.readString();
+        token = in.readString();
         updateTime = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(uid);
+        dest.writeString(name);
+        dest.writeInt(type);
+        dest.writeInt(count);
+        dest.writeString(email);
+        dest.writeString(createTime);
+        dest.writeString(token);
+        dest.writeString(updateTime);
     }
 
     public static final Creator<UserItem> CREATOR = new Creator<UserItem>() {
@@ -62,6 +77,14 @@ public  class UserItem implements Parcelable{
 
     public int getType() {
         return type;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public void setType(int type) {
@@ -105,14 +128,5 @@ public  class UserItem implements Parcelable{
         return 0;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(uid);
-        dest.writeString(name);
-        dest.writeInt(type);
-        dest.writeInt(count);
-        dest.writeString(email);
-        dest.writeString(createTime);
-        dest.writeString(updateTime);
-    }
+
 }

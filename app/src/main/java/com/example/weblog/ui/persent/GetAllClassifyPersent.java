@@ -1,10 +1,9 @@
 package com.example.weblog.ui.persent;
 
-import com.example.weblog.bean.LoginResult;
-import com.example.weblog.bean.TextItem;
+import com.example.weblog.bean.Classify;
+import com.example.weblog.bean.ClassifyRequest;
 import com.example.weblog.bean.TextListResult;
-import com.example.weblog.bean.UserItem;
-import com.example.weblog.ui.listener.OnGetLoginDataListener;
+import com.example.weblog.ui.listener.OnGetAllClassifyListener;
 import com.example.weblog.ui.listener.OnGetTextListDataListener;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -13,21 +12,19 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TextListPersent {
+public class GetAllClassifyPersent {
     private TextListPersent textListPersent;
-    public static final String GetTextList="http://47.101.132.233:8099/api/article/all";
-    private TextListResult textListResult;
+    public static final String GetTextList="http://47.101.132.233:8099/api/classify/all";
+    private ClassifyRequest classifyRequest;
 
-    public void getTextList(final OnGetTextListDataListener listener){
+    public void getAllClassify(final OnGetAllClassifyListener listener){
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -57,11 +54,11 @@ public class TextListPersent {
                     // 判断请求是否成功
                     if (connection.getResponseCode() == 200) {
                         // 获取返回的数据
-                        textListResult=new TextListResult();
+                        classifyRequest=new ClassifyRequest();
                         Gson gson = new Gson();
-                        textListResult = gson.fromJson(result, textListResult.getClass());
+                        classifyRequest = gson.fromJson(result, classifyRequest.getClass());
 
-                        List<TextItem> textItems=new ArrayList<>();
+                        List<Classify> classifylist=new ArrayList<>();
 
                         JsonParser parser = new JsonParser();
                         JsonObject jsonObject = parser.parse(result).getAsJsonObject();
@@ -71,11 +68,11 @@ public class TextListPersent {
                             //获取第i个数组元素
                             JsonElement el = jsonArray.get(i);
                             //映射为类实例
-                            textItems.add(gson.fromJson(el, TextItem.class));
+                            classifylist.add(gson.fromJson(el, Classify.class));
                             //  Bean1.SubjectsBean subject = gson.fromJson(el, Bean1.SubjectsBean.class);
                         }
-                        textListResult.setData(textItems);
-                        listener.getSuccess(textListResult);
+                        classifyRequest.setData(classifylist);
+                        listener.getSuccess(classifyRequest);
 
 
 
@@ -94,5 +91,4 @@ public class TextListPersent {
         }).start();
 
     }
-
 }

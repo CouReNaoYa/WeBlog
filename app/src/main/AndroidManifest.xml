@@ -28,6 +28,13 @@
         <activity android:name=".ui.activity.MainViewActivity">
 
         </activity>
+        <activity android:name=".ui.activity.CreatTextActivity">
+
+        </activity>
+
+        <activity android:name=".ui.activity.LoginRegisteraActivity">
+
+        </activity>
     </application>
 
 </manifest>
