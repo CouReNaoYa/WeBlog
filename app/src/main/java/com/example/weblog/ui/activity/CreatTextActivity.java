@@ -82,13 +82,9 @@ public class CreatTextActivity extends BaseActivity {
                     String classify= (String) tvCreatTextChooseClassify.getText();
                     String key=null;
 
-                    for(Map.Entry<String,String> str : params.entrySet())
+                    for(Map.Entry<String,String> str : params.entrySet()) {
 
-                    {
-
-                        if(str.equals(str.getKey()))
-
-                        {
+                        if(str.equals(str.getKey())) {
 
                             key = str.getValue();
 
@@ -167,8 +163,7 @@ public class CreatTextActivity extends BaseActivity {
 
 
                 switch (item.getItemId()) {
-                    case R.id.item_choose_classify_1:
-                    {
+                    case R.id.item_choose_classify_1: {
 
                         tvCreatTextChooseClassify.setText("默认分类");
 

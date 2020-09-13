@@ -97,6 +97,7 @@ public class LoginActivity extends BaseActivity {
                                 intent.putExtras(bundle);
                                 startActivity(intent);
 
+
                             }
                         });
                     }

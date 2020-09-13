@@ -73,7 +73,6 @@
             android:textSize="15dp"
             android:hint="  请输入内容..."
             android:gravity="top|left"
-            android:textHintColor="#fff"
 
             android:ellipsize="end"
             />

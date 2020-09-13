@@ -109,34 +109,22 @@ public  class TextListFragment extends BaseFragment {
 
 
                 switch (item.getItemId()) {
-                    case R.id.item_add_text:
-                    {
-                        Intent intent = new Intent(MainViewActivity.this, CreatTextActivity.class);
+                    case R.id.item_add_text: {
+                        Intent intent = new Intent(getActivity(), CreatTextActivity.class);
                         startActivity(intent);
-
-
                     }
                         //Toast.makeText(this, "退出", Toast.LENGTH_SHORT).show();
                         break;
-                    case R.id.item_select_text_by_id:
-                    {
-
-
+                    case R.id.item_select_text_by_id: {
                     }
                         //Toast.makeText(this, "设置", Toast.LENGTH_SHORT).show();
                         break;
-                    case R.id.item_select_account_by_id:
-                    {
-
-
+                    case R.id.item_select_account_by_id: {
                     }
                         //Toast.makeText(this, "账号", Toast.LENGTH_SHORT).show();
                         break;
 
-                    case R.id.item_select_text_by_core:
-                    {
-
-
+                    case R.id.item_select_text_by_core: {
                     }
                     //Toast.makeText(this, "设置", Toast.LENGTH_SHORT).show();
                     break;
