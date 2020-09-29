@@ -1,10 +1,9 @@
 package com.example.weblog.ui.persent;
 
-import com.example.weblog.bean.Classify;
-import com.example.weblog.bean.ClassifyRequest;
+import com.example.weblog.bean.TextItem;
 import com.example.weblog.bean.TextListResult;
-import com.example.weblog.ui.listener.OnGetAllClassifyListener;
-import com.example.weblog.ui.listener.OnGetTextListDataListener;
+import com.example.weblog.ui.listener.OnGetTextBySelectIdListener;
+import com.example.weblog.ui.listener.OnGetTextBySelectUserIdListener;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -16,21 +15,39 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-public class GetAllClassifyPersent {
-    public static final String GetTextList="http://47.101.132.233:8099/api/classify/all";
-    private ClassifyRequest classifyRequest;
+public class SelectTextByUseridPersent {
 
-    public void getAllClassify(final OnGetAllClassifyListener listener){
+    public static String GetTextBySelectId;
+    private TextListResult textListResult;
+
+    public void getTextBySelectUserid(final OnGetTextBySelectUserIdListener listener, final Map<String,String> paramsMap){
         new Thread(new Runnable() {
             @Override
             public void run() {
                 HttpURLConnection connection = null;
                 BufferedReader reader = null;
                 try {
-                    URL url = new URL(GetTextList);
+
+                    StringBuilder tempParams = new StringBuilder();
+                    int pos=0;
+                    for (String key : paramsMap.keySet()) {
+                        if (pos > 0) {
+                            tempParams.append("&");
+                        }
+                        tempParams.append(String.format("%s=%s", key,  URLEncoder.encode(paramsMap.get(key),"utf-8")));
+                        pos++;
+                    }
+
+                    String params =tempParams.toString();
+                    GetTextBySelectId="http://47.101.132.233:8099/api/article"+"?"+params;
+
+
+                    URL url = new URL(GetTextBySelectId);
                     connection = (HttpURLConnection) url.openConnection();
                     //设置请求方法
                     connection.setRequestMethod("GET");
@@ -53,11 +70,11 @@ public class GetAllClassifyPersent {
                     // 判断请求是否成功
                     if (connection.getResponseCode() == 200) {
                         // 获取返回的数据
-                        classifyRequest=new ClassifyRequest();
+                        textListResult=new TextListResult();
                         Gson gson = new Gson();
-                        classifyRequest = gson.fromJson(result, classifyRequest.getClass());
+                        textListResult = gson.fromJson(result, textListResult.getClass());
 
-                        List<Classify> classifylist=new ArrayList<>();
+                        List<TextItem> textItems=new ArrayList<>();
 
                         JsonParser parser = new JsonParser();
                         JsonObject jsonObject = parser.parse(result).getAsJsonObject();
@@ -67,14 +84,11 @@ public class GetAllClassifyPersent {
                             //获取第i个数组元素
                             JsonElement el = jsonArray.get(i);
                             //映射为类实例
-                            classifylist.add(gson.fromJson(el, Classify.class));
+                            textItems.add(gson.fromJson(el, TextItem.class));
                             //  Bean1.SubjectsBean subject = gson.fromJson(el, Bean1.SubjectsBean.class);
                         }
-                        classifyRequest.setData(classifylist);
-                        listener.getSuccess(classifyRequest);
-
-
-
+                        textListResult.setData(textItems);
+                        listener.getSuccess(textListResult);
 
                         // Log.e(TAG, "Post方式请求成功，result--->" + result);
                     } else {

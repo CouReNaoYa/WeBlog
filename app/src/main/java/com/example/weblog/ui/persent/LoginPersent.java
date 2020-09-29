@@ -49,7 +49,7 @@ public class LoginPersent {
 
                     String params =tempParams.toString();
                     System.out.println(" Params");
-                    System.out.println(params.toString());
+                    System.out.println("dasdsadsadasdad"+params.toString());
                     // 请求的参数转换为byte数组
                     byte[] postData = params.getBytes();
                     // 新建一个URL对象

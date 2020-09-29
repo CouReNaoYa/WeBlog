@@ -76,9 +76,6 @@ public class CreatTextActivity extends BaseActivity {
             public void onClick(View v) {
                 if (tvCreatTextChooseClassify!=null)
                 {
-
-
-
                     String classify= (String) tvCreatTextChooseClassify.getText();
                     String key=null;
 

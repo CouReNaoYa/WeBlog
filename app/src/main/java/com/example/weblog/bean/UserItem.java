@@ -3,7 +3,9 @@ package com.example.weblog.bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public  class UserItem implements Parcelable{
+import java.io.Serializable;
+
+public  class UserItem implements Parcelable, Serializable {
     /**
      * uid : 1
      * name : test

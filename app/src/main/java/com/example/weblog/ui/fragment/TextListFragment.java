@@ -17,6 +17,7 @@ import com.example.weblog.bean.TextListResult;
 import com.example.weblog.ui.activity.CreatTextActivity;
 import com.example.weblog.ui.activity.LoginActivity;
 import com.example.weblog.ui.activity.MainViewActivity;
+import com.example.weblog.ui.activity.SelectTextByIdActivity;
 import com.example.weblog.ui.adapter.TextListAdapter;
 import com.example.weblog.ui.fragment.base.BaseFragment;
 import com.example.weblog.ui.listener.OnGetTextListDataListener;
@@ -116,6 +117,8 @@ public  class TextListFragment extends BaseFragment {
                         //Toast.makeText(this, "退出", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.item_select_text_by_id: {
+                        Intent intent = new Intent(getActivity(), SelectTextByIdActivity.class);
+                        startActivity(intent);
                     }
                         //Toast.makeText(this, "设置", Toast.LENGTH_SHORT).show();
                         break;
